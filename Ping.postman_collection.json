@@ -1,0 +1,57 @@
+{
+	"info": {
+		"_postman_id": "130dad43-1e12-43ab-b740-73ac27e4d8ab",
+		"name": "Ping",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42933950",
+		"_collection_link": "https://api-team-2661.postman.co/workspace/restful-booker~4e642291-a316-46d6-9fa5-e32d118f1534/collection/42933950-130dad43-1e12-43ab-b740-73ac27e4d8ab?action=share&source=collection_link&creator=42933950"
+	},
+	"item": [
+		{
+			"name": "HealthCheck",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Endpoint",
+			"value": "ping",
+			"type": "string"
+		}
+	]
+}

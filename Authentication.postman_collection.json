@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "574fc366-3d9a-4e3d-b1d1-ecf4cad98c52",
+		"name": "Authentication",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42933950",
+		"_collection_link": "https://api-team-2661.postman.co/workspace/restful-booker~4e642291-a316-46d6-9fa5-e32d118f1534/collection/42933950-574fc366-3d9a-4e3d-b1d1-ecf4cad98c52?action=share&source=collection_link&creator=42933950"
+	},
+	"item": [
+		{
+			"name": "CreatToken",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"// Check Valid Account Authentication Staues Code\r",
+							"pm.test(\"Check Staues Code is 200 OK  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"});\r",
+							"\r",
+							"// Check Check Token is Returned for Valid Account \r",
+							"pm.test(\"Check  Token is Returned for Valid Account\",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('token')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\" : \"{{username}}\",\r\n    \"password\" : \"{{password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Endpoint",
+			"value": "auth",
+			"type": "string"
+		},
+		{
+			"key": "username",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "password",
+			"value": "password123",
+			"type": "string"
+		}
+	]
+}

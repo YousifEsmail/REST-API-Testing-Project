@@ -1,0 +1,939 @@
+{
+	"info": {
+		"_postman_id": "3362354c-e130-4104-9818-97e2f5eb0569",
+		"name": "Booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "42933950",
+		"_collection_link": "https://api-team-2661.postman.co/workspace/restful-booker~4e642291-a316-46d6-9fa5-e32d118f1534/collection/42933950-3362354c-e130-4104-9818-97e2f5eb0569?action=share&source=collection_link&creator=42933950"
+	},
+	"item": [
+		{
+			"name": "GetBookingIds -All ids",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var BookingNum= pm.response.json().length\r",
+							"var RandomIndx= Math.floor(Math.random()*BookingNum)\r",
+							"\r",
+							"// Check stsurs code is 200 OK\r",
+							"pm.test(\"Check Staues Code is 200 OK  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"});\r",
+							"\r",
+							"// The resonse Have array and check the first and the last and with in the range \r",
+							"pm.test(\"Check First Booking Id  \",function(){\r",
+							"    pm.expect(pm.response.json()[0].bookingid).to.be.above(-1)\r",
+							"});\r",
+							"\r",
+							"// The resonse Have array and check the first and the last and with in the range \r",
+							"pm.test(\"Check  Booking Id with in the Range \",function(){\r",
+							"    pm.expect(pm.response.json()[RandomIndx].bookingid).to.be.above(-1)\r",
+							"});\r",
+							"\r",
+							"// The resonse Have array and check the first and the last and with in the range \r",
+							"pm.test(\"Check Last Booking Id  \",function(){\r",
+							"    pm.expect(pm.response.json()[BookingNum-1].bookingid).to.be.above(-1)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBookingIds -Filter By Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var BookingNum= pm.response.json().length\r",
+							"var RandomIndx= Math.floor(Math.random()*BookingNum)\r",
+							"\r",
+							"// Check stsurs code is 200 OK\r",
+							"pm.test(\"Check Staues Code is 200 OK  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"});\r",
+							"\r",
+							"// The resonse Have array and check the first and the last and with in the range \r",
+							"pm.test(\"Check First Booking Id  \",function(){\r",
+							"    pm.expect(pm.response.json()[0].bookingid).to.be.above(0)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}?firstname={{firstname}}&lastname={{lastname}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}"
+					],
+					"query": [
+						{
+							"key": "firstname",
+							"value": "{{firstname}}"
+						},
+						{
+							"key": "lastname",
+							"value": "{{lastname}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBookingIds -Filter By Date",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var BookingNum= pm.response.json().length\r",
+							"var RandomIndx= Math.floor(Math.random()*BookingNum)\r",
+							"\r",
+							"// Check stsurs code is 200 OK\r",
+							"pm.test(\"Check Staues Code is 200 OK  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"});\r",
+							"\r",
+							"// The resonse Have array and check the first and the last and with in the range \r",
+							"pm.test(\"Check First Booking Id  \",function(){\r",
+							"    pm.expect(pm.response.json()[0].bookingid).to.be.above(0)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}?checkin={{checkin}}&checkout={{checkout}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}"
+					],
+					"query": [
+						{
+							"key": "checkin",
+							"value": "{{checkin}}"
+						},
+						{
+							"key": "checkout",
+							"value": "{{checkout}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check stsurs code is 200 OK\r",
+							"pm.test(\"Check Staues Code is 200 OK  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object   \r",
+							"pm.test(\"Check resonse body is an object  \",function(){\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object  and have first name \r",
+							"pm.test(\"Check resonse body is an object   and have first name  Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('firstname')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String \r",
+							"pm.test(\"Check resonse body is an object and have first name  of type String \",function(){\r",
+							"    pm.expect(pm.response.json().firstname).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object   and have last name\r",
+							"pm.test(\"Check resonse body is an object   and have last name Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('lastname')\r",
+							"});\r",
+							"// Check resonse body is an object and have last name  of type String \r",
+							"pm.test(\" Check resonse body is an object and have last name  of type String  \",function(){\r",
+							"    pm.expect(pm.response.json().lastname).to.be.a('String')\r",
+							"});\r",
+							"//Check resonse body is an object   and have totalprice\r",
+							"pm.test(\"Check resonse body is an object   and have total price Field  \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('totalprice')\r",
+							"});\r",
+							"\r",
+							"// Check resonse body is an object and have total price  of type Number \r",
+							"pm.test(\"Check resonse body is an object and have total price  of type Number   \",function(){\r",
+							"    pm.expect(pm.response.json().totalprice).to.be.a('number')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object   and have depositpaid\r",
+							"pm.test(\"Check resonse body is an object   and have total depositpaid \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('depositpaid')\r",
+							"});\r",
+							"\r",
+							"// Check resonse body is an object and have depositpaid  of type Boolean \r",
+							"pm.test(\"Check resonse body is an object   and have total depositpaid Field  \",function(){\r",
+							"    pm.expect(pm.response.json().depositpaid).to.be.a('Boolean')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object   and have bookingdates object\r",
+							"pm.test(\"Check resonse body is an object   and have total bookingdates\",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('bookingdates')\r",
+							"});\r",
+							"\r",
+							"//Check  bookingdates have Chcekin\r",
+							"pm.test(\"Check  bookingdates have Chcekin \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates).to.have.property('checkin')\r",
+							"});\r",
+							"// and its string\r",
+							"pm.test(\"Check  bookingdates have Chcekin of type String \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates.checkin).to.be.a('String')\r",
+							"});\r",
+							"//Check  bookingdates have Chcekout \r",
+							"pm.test(\"Check  bookingdates have Chcekout\",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates).to.have.property('checkout')\r",
+							"});\r",
+							"//and its an string \r",
+							"\r",
+							"pm.test(\"Check  bookingdates have Chcekout of type String  \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates.checkout).to.be.a('String')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}/{{id}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CreateBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check stsurs code is 200 OK\r",
+							"pm.test(\"Check Staues Code is 200 OK  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   \r",
+							"pm.test(\"Check resonse body is an object  \",function(){\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object  and have Booking id  \r",
+							"pm.test(\"Check resonse body is an object and have bookingid  Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('bookingid')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"// Check resonse body is an object and have total price  of type Number \r",
+							"pm.test(\"Check resonse body is an object and have bookingid  of type Number   \",function(){\r",
+							"    pm.expect(pm.response.json().bookingid).to.be.a('number')\r",
+							"\r",
+							"\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object  and have first name \r",
+							"pm.test(\"Check resonse body is an object   and have first name  Field \",function(){\r",
+							"    pm.expect(pm.response.json().booking).to.have.property('firstname')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String \r",
+							"pm.test(\"Check resonse body is an object and have first name  of type String \",function(){\r",
+							"    pm.expect(pm.response.json().booking.firstname).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String and eqaual the Posted Data\r",
+							"pm.test(\"Check resonse body is an object and have first name  of type String And equal posted data \",function(){\r",
+							"    var posted=pm.collectionVariables.get('firstname')\r",
+							"    pm.expect(pm.response.json().booking.firstname).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have last name\r",
+							"pm.test(\"Check resonse body is an object   and have last name Field \",function(){\r",
+							"    pm.expect(pm.response.json().booking).to.have.property('lastname')\r",
+							"});\r",
+							"// Check resonse body is an object and have last name  of type String \r",
+							"pm.test(\" Check resonse body is an object and have last name  of type String  \",function(){\r",
+							"    pm.expect(pm.response.json().booking.lastname).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object and have last name  of type String and eqaual the Posted Data\r",
+							"pm.test(\"Check resonse body is an object and have lastname of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('lastname')\r",
+							"    pm.expect(pm.response.json().booking.lastname).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have totalprice\r",
+							"pm.test(\"Check resonse body is an object   and have total price Field  \",function(){\r",
+							"    pm.expect(pm.response.json().booking).to.have.property('totalprice')\r",
+							"});\r",
+							"\r",
+							"// Check resonse body is an object and have total price  of type Number \r",
+							"pm.test(\"Check resonse body is an object and have total price  of type Number   \",function(){\r",
+							"    pm.expect(pm.response.json().booking.totalprice).to.be.a('number')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have totalprice of type String And equal posted data  \",function(){\r",
+							"     posted=Number(pm.collectionVariables.get('totalprice'))\r",
+							"    pm.expect(pm.response.json().booking.totalprice).to.equals(posted)\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object   and have depositpaid\r",
+							"pm.test(\"Check resonse body is an object   and have total depositpaid \",function(){\r",
+							"    pm.expect(pm.response.json().booking).to.have.property('depositpaid')\r",
+							"});\r",
+							"\r",
+							"// Check resonse body is an object and have depositpaid  of type Boolean \r",
+							"pm.test(\"Check resonse body is an object   and have total depositpaid Field  \",function(){\r",
+							"    pm.expect(pm.response.json().booking.depositpaid).to.be.a('Boolean')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have depositpaid of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('depositpaid')\r",
+							"    pm.expect(pm.response.json().booking.depositpaid).to.be.true\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have bookingdates object\r",
+							"pm.test(\"Check resonse body is an object   and have total bookingdates\",function(){\r",
+							"    pm.expect(pm.response.json().booking).to.have.property('bookingdates')\r",
+							"});\r",
+							"\r",
+							"//Check  bookingdates have Chcekin\r",
+							"pm.test(\"Check  bookingdates have Chcekin \",function(){\r",
+							"    pm.expect(pm.response.json().booking.bookingdates).to.have.property('checkin')\r",
+							"});\r",
+							"// and its string\r",
+							"pm.test(\"Check  bookingdates have Chcekin of type String \",function(){\r",
+							"    pm.expect(pm.response.json().booking.bookingdates.checkin).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have checkin of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('checkin')\r",
+							"    pm.expect(pm.response.json().booking.bookingdates.checkin).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"//Check  bookingdates have Chcekout \r",
+							"pm.test(\"Check  bookingdates have Chcekout\",function(){\r",
+							"    pm.expect(pm.response.json().booking.bookingdates).to.have.property('checkout')\r",
+							"});\r",
+							"//and its an string \r",
+							"\r",
+							"pm.test(\"Check  bookingdates have Chcekout of type String  \",function(){\r",
+							"    pm.expect(pm.response.json().booking.bookingdates.checkout).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have checkout of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('checkout')\r",
+							"    pm.expect(pm.response.json().booking.bookingdates.checkout).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : {{totalprice}},\r\n    \"depositpaid\" : {{depositpaid}},\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checkout}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check stsurs code is 200 OK\r",
+							"pm.test(\"Check Staues Code is 200 OK  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   \r",
+							"pm.test(\"Check resonse body is an object  \",function(){\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object  and have first name \r",
+							"pm.test(\"Check resonse body is an object   and have first name  Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('firstname')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String \r",
+							"pm.test(\"Check resonse body is an object and have first name  of type String \",function(){\r",
+							"    pm.expect(pm.response.json().firstname).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String and eqaual the Posted Data\r",
+							"pm.test(\"Check resonse body is an object and have first name  of type String And equal posted data \",function(){\r",
+							"    var posted=pm.collectionVariables.get('firstname')\r",
+							"    pm.expect(pm.response.json().firstname).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have last name\r",
+							"pm.test(\"Check resonse body is an object   and have last name Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('lastname')\r",
+							"});\r",
+							"// Check resonse body is an object and have last name  of type String \r",
+							"pm.test(\" Check resonse body is an object and have last name  of type String  \",function(){\r",
+							"    pm.expect(pm.response.json().lastname).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object and have last name  of type String and eqaual the Posted Data\r",
+							"pm.test(\"Check resonse body is an object and have lastname of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('lastname')\r",
+							"    pm.expect(pm.response.json().lastname).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have totalprice\r",
+							"pm.test(\"Check resonse body is an object   and have total price Field  \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('totalprice')\r",
+							"});\r",
+							"\r",
+							"// Check resonse body is an object and have total price  of type Number \r",
+							"pm.test(\"Check resonse body is an object and have total price  of type Number   \",function(){\r",
+							"    pm.expect(pm.response.json().totalprice).to.be.a('number')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have totalprice of type String And equal posted data  \",function(){\r",
+							"     posted=Number(pm.collectionVariables.get('totalprice'))\r",
+							"    pm.expect(pm.response.json().totalprice).to.equals(posted)\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object   and have depositpaid\r",
+							"pm.test(\"Check resonse body is an object   and have total depositpaid \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('depositpaid')\r",
+							"});\r",
+							"\r",
+							"// Check resonse body is an object and have depositpaid  of type Boolean \r",
+							"pm.test(\"Check resonse body is an object   and have total depositpaid Field  \",function(){\r",
+							"    pm.expect(pm.response.json().depositpaid).to.be.a('Boolean')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have depositpaid of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('depositpaid')\r",
+							"    pm.expect(pm.response.json().depositpaid).to.be.true\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have bookingdates object\r",
+							"pm.test(\"Check resonse body is an object   and have total bookingdates\",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('bookingdates')\r",
+							"});\r",
+							"\r",
+							"//Check  bookingdates have Chcekin\r",
+							"pm.test(\"Check  bookingdates have Chcekin \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates).to.have.property('checkin')\r",
+							"});\r",
+							"// and its string\r",
+							"pm.test(\"Check  bookingdates have Chcekin of type String \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates.checkin).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have checkin of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('checkin')\r",
+							"    pm.expect(pm.response.json().bookingdates.checkin).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"//Check  bookingdates have Chcekout \r",
+							"pm.test(\"Check  bookingdates have Chcekout\",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates).to.have.property('checkout')\r",
+							"});\r",
+							"//and its an string \r",
+							"\r",
+							"pm.test(\"Check  bookingdates have Chcekout of type String  \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates.checkout).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have checkout of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('checkout')\r",
+							"    pm.expect(pm.response.json().bookingdates.checkout).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object  and have first name \r",
+							"pm.test(\"Check resonse body is an object   and have additionalneeds  Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('additionalneeds')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String \r",
+							"pm.test(\"Check resonse body is an object and have additionalneeds  of type String \",function(){\r",
+							"    pm.expect(pm.response.json().additionalneeds).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String and eqaual the Posted Data\r",
+							"pm.test(\"Check resonse body is an object and have additionalneeds of type String And equal posted data \",function(){\r",
+							"    var posted=pm.collectionVariables.get('additionalneeds')\r",
+							"    pm.expect(pm.response.json().additionalneeds).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token=abc123",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQxMjM=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\",\r\n    \"totalprice\" : {{totalprice}},\r\n    \"depositpaid\" : {{depositpaid}},\r\n    \"bookingdates\" : {\r\n        \"checkin\" : \"{{checkin}}\",\r\n        \"checkout\" : \"{{checkout}}\"\r\n    },\r\n    \"additionalneeds\" : \"{{additionalneeds}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}/{{id}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Partial Update Booking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check stsurs code is 200 OK\r",
+							"pm.test(\"Check Staues Code is 200 OK  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(200)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   \r",
+							"pm.test(\"Check resonse body is an object  \",function(){\r",
+							"    pm.expect(pm.response.json()).to.be.an('object')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object  and have first name \r",
+							"pm.test(\"Check resonse body is an object   and have first name  Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('firstname')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String \r",
+							"pm.test(\"Check resonse body is an object and have first name  of type String \",function(){\r",
+							"    pm.expect(pm.response.json().firstname).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String and eqaual the Posted Data\r",
+							"pm.test(\"Check resonse body is an object and have first name  of type String And equal posted data \",function(){\r",
+							"    var posted=pm.collectionVariables.get('firstname')\r",
+							"    pm.expect(pm.response.json().firstname).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have last name\r",
+							"pm.test(\"Check resonse body is an object   and have last name Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('lastname')\r",
+							"});\r",
+							"// Check resonse body is an object and have last name  of type String \r",
+							"pm.test(\" Check resonse body is an object and have last name  of type String  \",function(){\r",
+							"    pm.expect(pm.response.json().lastname).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object and have last name  of type String and eqaual the Posted Data\r",
+							"pm.test(\"Check resonse body is an object and have lastname of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('lastname')\r",
+							"    pm.expect(pm.response.json().lastname).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have totalprice\r",
+							"pm.test(\"Check resonse body is an object   and have total price Field  \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('totalprice')\r",
+							"});\r",
+							"\r",
+							"// Check resonse body is an object and have total price  of type Number \r",
+							"pm.test(\"Check resonse body is an object and have total price  of type Number   \",function(){\r",
+							"    pm.expect(pm.response.json().totalprice).to.be.a('number')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have totalprice of type String And equal posted data  \",function(){\r",
+							"     posted=Number(pm.collectionVariables.get('totalprice'))\r",
+							"    pm.expect(pm.response.json().totalprice).to.equals(posted)\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object   and have depositpaid\r",
+							"pm.test(\"Check resonse body is an object   and have total depositpaid \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('depositpaid')\r",
+							"});\r",
+							"\r",
+							"// Check resonse body is an object and have depositpaid  of type Boolean \r",
+							"pm.test(\"Check resonse body is an object   and have total depositpaid Field  \",function(){\r",
+							"    pm.expect(pm.response.json().depositpaid).to.be.a('Boolean')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have depositpaid of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('depositpaid')\r",
+							"    pm.expect(pm.response.json().depositpaid).to.be.false\r",
+							"});\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object   and have bookingdates object\r",
+							"pm.test(\"Check resonse body is an object   and have total bookingdates\",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('bookingdates')\r",
+							"});\r",
+							"\r",
+							"//Check  bookingdates have Chcekin\r",
+							"pm.test(\"Check  bookingdates have Chcekin \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates).to.have.property('checkin')\r",
+							"});\r",
+							"// and its string\r",
+							"pm.test(\"Check  bookingdates have Chcekin of type String \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates.checkin).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have checkin of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('checkin')\r",
+							"    pm.expect(pm.response.json().bookingdates.checkin).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"//Check  bookingdates have Chcekout \r",
+							"pm.test(\"Check  bookingdates have Chcekout\",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates).to.have.property('checkout')\r",
+							"});\r",
+							"//and its an string \r",
+							"\r",
+							"pm.test(\"Check  bookingdates have Chcekout of type String  \",function(){\r",
+							"    pm.expect(pm.response.json().bookingdates.checkout).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check resonse body is an object and have checkout of type String And equal posted data  \",function(){\r",
+							"    var posted=pm.collectionVariables.get('checkout')\r",
+							"    pm.expect(pm.response.json().bookingdates.checkout).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"\r",
+							"//Check resonse body is an object  and have first name \r",
+							"pm.test(\"Check resonse body is an object   and have additionalneeds  Field \",function(){\r",
+							"    pm.expect(pm.response.json()).to.have.property('additionalneeds')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String \r",
+							"pm.test(\"Check resonse body is an object and have additionalneeds  of type String \",function(){\r",
+							"    pm.expect(pm.response.json().additionalneeds).to.be.a('String')\r",
+							"});\r",
+							"\r",
+							"//Check resonse body is an object and have first name  of type String and eqaual the Posted Data\r",
+							"pm.test(\"Check resonse body is an object and have additionalneeds of type String And equal posted data \",function(){\r",
+							"    var posted=pm.collectionVariables.get('additionalneeds')\r",
+							"    pm.expect(pm.response.json().additionalneeds).to.equal(posted)\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token=abc123",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQxMjM=",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstname\" : \"{{firstname}}\",\r\n    \"lastname\" : \"{{lastname}}\"\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}/{{id}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteBooking",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Check stsurs code is 201 Created\r",
+							"pm.test(\"Check Staues Code is 201 Created  \",function(){\r",
+							"    pm.expect(pm.response.code).to.equal(201)\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check Staues Code is 201 Created  \",function(){\r",
+							"    pm.expect(pm.response.status).to.equal('Created')\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "token=abc123",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Basic YWRtaW46cGFzc3dvcmQxMjM=",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BaseURL}}/{{Endpoint}}/{{id}}",
+					"host": [
+						"{{BaseURL}}"
+					],
+					"path": [
+						"{{Endpoint}}",
+						"{{id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Endpoint",
+			"value": "booking",
+			"type": "string"
+		},
+		{
+			"key": "id",
+			"value": "1",
+			"type": "string"
+		},
+		{
+			"key": "firstname",
+			"value": "Sally",
+			"type": "string"
+		},
+		{
+			"key": "lastname",
+			"value": "Brown",
+			"type": "string"
+		},
+		{
+			"key": "totalprice",
+			"value": "111",
+			"type": "string"
+		},
+		{
+			"key": "depositpaid",
+			"value": "true",
+			"type": "string"
+		},
+		{
+			"key": "checkin",
+			"value": "2014-03-13",
+			"type": "string"
+		},
+		{
+			"key": "checkout",
+			"value": "2014-05-21",
+			"type": "string"
+		},
+		{
+			"key": "additionalneeds",
+			"value": "Breakfast",
+			"type": "string"
+		}
+	]
+}
